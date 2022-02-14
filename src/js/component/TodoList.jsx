@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import AddTaskInput from "./AddTaskInput";
+import BackPaperSheets from "./BackPaperSheets";
 import ListItem from "./ListItem";
 
 const TodoList = () => {
@@ -17,6 +18,8 @@ const TodoList = () => {
 
 	return (
 		<main className="todo-list">
+			<BackPaperSheets />
+
 			<AddTaskInput addTask={addTask} />
 
 			<ul>
