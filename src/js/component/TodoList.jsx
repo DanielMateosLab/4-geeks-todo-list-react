@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 import AddTaskInput from "./AddTaskInput";
-import BackPaperSheets from "./BackPaperSheets";
+import Papers from "./Papers";
 import ListItem from "./ListItem";
 
 const TodoList = () => {
-	let [tasks, setTasks] = useState(["Do laundry"]);
+	let [tasks, setTasks] = useState([
+		"Do laundry",
+		"Make dinner",
+		"Have a shower",
+	]);
 
 	function addTask(task) {
-		setTasks([...tasks, task]);
+		setTasks([task, ...tasks]);
 	}
 
 	function removeTask(index) {
@@ -17,23 +21,26 @@ const TodoList = () => {
 	}
 
 	return (
-		<main className="todo-list">
-			<BackPaperSheets />
+		<Papers>
+			<main>
+				<AddTaskInput addTask={addTask} />
 
-			<AddTaskInput addTask={addTask} />
+				<ul>
+					{tasks.map((task, index) => (
+						<ListItem
+							{...{ key: index, index, task, removeTask }}
+						/>
+					))}
+				</ul>
 
-			<ul>
-				{tasks.map((task, index) => (
-					<ListItem {...{ key: index, index, task, removeTask }} />
-				))}
-			</ul>
-
-			<footer>
-				{tasks.length
-					? tasks.length + ` item${tasks.length > 1 ? "s" : ""} left`
-					: "No tasks, add a task"}
-			</footer>
-		</main>
+				<footer>
+					{tasks.length
+						? tasks.length +
+						  ` item${tasks.length > 1 ? "s" : ""} left`
+						: "No tasks, add a task"}
+				</footer>
+			</main>
+		</Papers>
 	);
 };
 
