@@ -2,7 +2,7 @@ import React from "react";
 
 const ListItem = ({ task, index, removeTask }) => (
 	<li className="list-item">
-		{task}
+		{task.label}
 
 		<button className="close-btn" onClick={() => removeTask(index)}>
 			<i className="bi bi-x"></i>

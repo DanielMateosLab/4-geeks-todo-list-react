@@ -6,26 +6,45 @@ import ListItem from "./ListItem";
 const TodoList = () => {
 	let [tasks, setTasks] = useState([]);
 
-	function addTask(task) {
-		setTasks([task, ...tasks]);
+	useEffect(() => {
+		getTasks();
+	}, []);
+
+	async function getTasks() {
+		const newTasks = await (
+			await fetch(
+				"https://assets.breatheco.de/apis/fake/todos/user/danielMateosLab"
+			)
+		).json();
+
+		setTasks(newTasks);
+	}
+
+	async function updateTasks(newTasks) {
+		await fetch(
+			"https://assets.breatheco.de/apis/fake/todos/user/danielMateosLab",
+			{
+				method: "PUT",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(newTasks),
+			}
+		);
+
+		getTasks();
+	}
+
+	function addTask(label) {
+		updateTasks([{ label, done: false }, ...tasks]);
 	}
 
 	function removeTask(index) {
 		const newTasks = [...tasks];
 		newTasks.splice(index, 1);
-		setTasks(newTasks);
-	}
 
-	useEffect(() => {
-		(async () => {
-			const initalTasks = await (
-				await fetch(
-					"https://assets.breatheco.de/apis/fake/todos/user/danielMateosLab"
-				)
-			).json();
-			console.log(initalTasks);
-		})();
-	}, []);
+		updateTasks(newTasks);
+	}
 
 	return (
 		<Papers>
