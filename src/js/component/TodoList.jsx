@@ -1,50 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import AddTaskInput from "./AddTaskInput";
 import Papers from "./Papers";
 import ListItem from "./ListItem";
+import useTasksApi from "../hooks/useTasksApi";
 
 const TodoList = () => {
-	let [tasks, setTasks] = useState([]);
-
-	useEffect(() => {
-		getTasks();
-	}, []);
-
-	async function getTasks() {
-		const newTasks = await (
-			await fetch(
-				"https://assets.breatheco.de/apis/fake/todos/user/danielMateosLab"
-			)
-		).json();
-
-		setTasks(newTasks);
-	}
-
-	async function updateTasks(newTasks) {
-		await fetch(
-			"https://assets.breatheco.de/apis/fake/todos/user/danielMateosLab",
-			{
-				method: "PUT",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify(newTasks),
-			}
-		);
-
-		getTasks();
-	}
-
-	function addTask(label) {
-		updateTasks([{ label, done: false }, ...tasks]);
-	}
-
-	function removeTask(index) {
-		const newTasks = [...tasks];
-		newTasks.splice(index, 1);
-
-		updateTasks(newTasks);
-	}
+	const { tasks, addTask, removeTask } = useTasksApi();
 
 	return (
 		<Papers>
