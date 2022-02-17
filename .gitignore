@@ -62,5 +62,4 @@ dist/*
 
 !.gitkeep
 !.htaccess
-!.eslintrc
 .now
