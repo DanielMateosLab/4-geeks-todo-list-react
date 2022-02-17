@@ -54,6 +54,31 @@ li {
     display: flex;
     justify-content: space-between;
     gap: 1rem;
+    position: relative;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+  
+    to {
+        transform: rotate(360deg);
+    }
+}
+.bi-pencil {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 4rem;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    animation: rotate 1.5s ease-out;
+    animation-iteration-count: infinite;
 }
 
 .close-btn {
@@ -86,7 +111,11 @@ footer {
     }
     
     .list-item {
-        padding: 1rem 1rem 1rem 2rem;
+        padding: 1rem 1rem 1rem 3rem;
+    }
+
+    .bi-pencil {
+        width: 3rem;
     }
     
     .close-btn {
