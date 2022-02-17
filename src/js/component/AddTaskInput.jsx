@@ -3,22 +3,26 @@ import Spinner from "./Spinner";
 
 const AddTaskInput = ({ addTask }) => {
 	const [newTask, setNewTask] = useState("");
+	const [loading, setLoading] = useState(false);
 
 	function handleChange(event) {
 		setNewTask(event.target.value);
 	}
 
-	function handleSubmit(event) {
+	async function handleSubmit(event) {
 		event.preventDefault();
+		setLoading(true);
 
-		addTask(newTask);
+		await addTask(newTask);
 		setNewTask("");
+
+		setLoading(false);
 	}
 
 	return (
 		<form onSubmit={handleSubmit}>
 			<div className="list-item">
-				{false && <Spinner />}
+				{loading && <Spinner />}
 				<input
 					type="text"
 					placeholder="What needs to be done?"

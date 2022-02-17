@@ -24,20 +24,20 @@ const useTasksApi = () => {
 			body: JSON.stringify(newTasks),
 		});
 
-		getTasks();
+		await getTasks();
 	}
 
 	/** Adds a new task with the given label string */
-	function addTask(label) {
-		updateTasks([{ label, done: false }, ...tasks]);
+	async function addTask(label) {
+		await updateTasks([{ label, done: false }, ...tasks]);
 	}
 
 	/** Removes task with the given index */
-	function removeTask(index) {
+	async function removeTask(index) {
 		const newTasks = [...tasks];
 		newTasks.splice(index, 1);
 
-		updateTasks(newTasks);
+		await updateTasks(newTasks);
 	}
 
 	return {
