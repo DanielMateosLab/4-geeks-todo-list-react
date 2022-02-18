@@ -57,6 +57,16 @@ li {
     position: relative;
 }
 
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+    color: rgb(97, 73, 63)
+}
+
+
 @keyframes rotate {
     from {
         transform: rotate(0deg);

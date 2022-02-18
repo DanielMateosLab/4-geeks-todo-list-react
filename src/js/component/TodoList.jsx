@@ -5,12 +5,12 @@ import ListItem from "./ListItem";
 import useTasksApi from "../hooks/useTasksApi";
 
 const TodoList = () => {
-	const { tasks, addTask, removeTask } = useTasksApi();
+	const { tasks, addTask, removeTask, removeAllTasks } = useTasksApi();
 
 	return (
 		<Papers>
 			<main>
-				<AddTaskInput addTask={addTask} />
+				<AddTaskInput {...{ addTask, removeAllTasks }} />
 
 				<ul>
 					{tasks.map((task, index) => (

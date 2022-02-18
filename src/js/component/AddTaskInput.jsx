@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Spinner from "./Spinner";
 
-const AddTaskInput = ({ addTask }) => {
+const AddTaskInput = ({ addTask, removeAllTasks }) => {
 	const [newTask, setNewTask] = useState("");
 	const [loading, setLoading] = useState(false);
 
@@ -9,14 +9,24 @@ const AddTaskInput = ({ addTask }) => {
 		setNewTask(event.target.value);
 	}
 
-	async function handleSubmit(event) {
-		event.preventDefault();
+	async function handleLoading(asyncFunc) {
 		setLoading(true);
-
-		await addTask(newTask);
-		setNewTask("");
-
+		await asyncFunc();
 		setLoading(false);
+	}
+
+	function handleSubmit(event) {
+		event.preventDefault();
+
+		handleLoading(() => addTask(newTask));
+
+		setNewTask("");
+	}
+
+	function handleRemoveAll(event) {
+		event.preventDefault();
+
+		handleLoading(removeAllTasks);
 	}
 
 	return (
@@ -30,6 +40,9 @@ const AddTaskInput = ({ addTask }) => {
 					value={newTask}
 					onChange={handleChange}
 				/>
+				<a href="#" onClick={handleRemoveAll}>
+					Remove all
+				</a>
 			</div>
 		</form>
 	);
