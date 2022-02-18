@@ -15,10 +15,26 @@ const useTasksApi = () => {
 		getTasks();
 	}, []);
 
-	async function getTasks() {
-		const newTasks = await (await fetch(uri)).json();
+	async function initializeTasks() {
+		await fetch(uri, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify([]),
+		});
+	}
 
-		setTasks(newTasks.slice(0, -1));
+	async function getTasks() {
+		const res = await fetch(uri);
+
+		if (!res.ok) {
+			await initializeTasks();
+		} else {
+			const newTasks = await (await fetch(uri)).json();
+
+			setTasks(newTasks.slice(0, -1));
+		}
 	}
 
 	async function updateTasks(newTasks) {
