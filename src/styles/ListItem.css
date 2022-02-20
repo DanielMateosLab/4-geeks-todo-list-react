@@ -1,0 +1,36 @@
+ul {
+  margin: 0;
+  padding: 0;
+}
+li {
+  list-style: none;
+}
+
+.close-btn {
+  color: transparent;
+  border: none;
+  background: none;
+}
+
+.list-section:hover .close-btn {
+  color: var(--primary-color);
+}
+
+li.list-section:hover {
+  background: rgba(0, 0, 0, 0.033);
+}
+
+li .done {
+  text-decoration: line-through;
+  color: var(--secondary-color);
+}
+
+li span {
+  cursor: pointer;
+}
+
+@media (max-width: 576px) {
+  .close-btn {
+    color: var(--primary-color);
+  }
+}

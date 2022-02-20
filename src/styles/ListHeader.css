@@ -1,0 +1,8 @@
+input {
+  outline: none;
+  border: 0;
+}
+
+header.list-section {
+  flex-wrap: wrap-reverse;
+}

@@ -1,5 +1,6 @@
 import React from "react";
 import TodoList from "./TodoList";
+import "styles/Home.css";
 
 const Home = () => {
 	return (
