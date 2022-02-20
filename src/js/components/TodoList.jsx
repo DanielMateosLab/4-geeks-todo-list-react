@@ -1,9 +1,9 @@
 import React from "react";
 import ListHeader from "./ListHeader";
 import Papers from "./Papers";
-import ListItem from "./ListItem";
 import useTasksApi from "../hooks/useTasksApi";
 import ListFooter from "./ListFooter";
+import ListTasks from "./ListTasks";
 
 const TodoList = () => {
 	const { tasks, addTask, removeTask, removeAllTasks } = useTasksApi();
@@ -13,13 +13,7 @@ const TodoList = () => {
 			<main>
 				<ListHeader {...{ addTask, removeAllTasks }} />
 
-				<ul>
-					{tasks.map((task, index) => (
-						<ListItem
-							{...{ key: index, index, task, removeTask }}
-						/>
-					))}
-				</ul>
+				<ListTasks tasks={tasks} removeTask={removeTask} />
 
 				<ListFooter tasksCount={tasks.length} />
 			</main>
