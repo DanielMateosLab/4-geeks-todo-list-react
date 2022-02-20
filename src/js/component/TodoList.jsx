@@ -1,5 +1,5 @@
 import React from "react";
-import AddTaskInput from "./AddTaskInput";
+import ListHeader from "./ListHeader";
 import Papers from "./Papers";
 import ListItem from "./ListItem";
 import useTasksApi from "../hooks/useTasksApi";
@@ -10,7 +10,7 @@ const TodoList = () => {
 	return (
 		<Papers>
 			<main>
-				<AddTaskInput {...{ addTask, removeAllTasks }} />
+				<ListHeader {...{ addTask, removeAllTasks }} />
 
 				<ul>
 					{tasks.map((task, index) => (

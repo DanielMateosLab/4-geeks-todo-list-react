@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Spinner from "./Spinner";
 
-const AddTaskInput = ({ addTask, removeAllTasks }) => {
+const ListHeader = ({ addTask, removeAllTasks }) => {
 	const [newTask, setNewTask] = useState("");
 	const [loading, setLoading] = useState(false);
 
@@ -48,4 +48,4 @@ const AddTaskInput = ({ addTask, removeAllTasks }) => {
 	);
 };
 
-export default AddTaskInput;
+export default ListHeader;
