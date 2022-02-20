@@ -1,11 +1,11 @@
 import React, { useState } from "react";
+import "styles/ListHeader.css";
 import ListSection from "./ListSection";
 import Spinner from "./Spinner";
-import "styles/ListHeader.css";
 import useLoading from "../hooks/useLoading";
 import Link from "./Link";
 
-const ListHeader = ({ addTask, removeAllTasks }) => {
+const ListHeader = ({ addTask, removeAllTasks, hideDone, setHideDone }) => {
 	const [newTask, setNewTask] = useState("");
 	const { loading, handleLoading } = useLoading();
 
@@ -25,9 +25,14 @@ const ListHeader = ({ addTask, removeAllTasks }) => {
 		handleLoading(removeAllTasks);
 	}
 
+	function handleSwitchHide() {
+		setHideDone(!hideDone);
+	}
+
 	return (
 		<ListSection htmlElement="header">
 			{loading && <Spinner />}
+
 			<form onSubmit={handleSubmit}>
 				<input
 					type="text"
@@ -37,7 +42,14 @@ const ListHeader = ({ addTask, removeAllTasks }) => {
 					onChange={handleChange}
 				/>
 			</form>
-			<Link onClick={handleRemoveAll} text="Clean list" />
+
+			<nav>
+				<Link
+					onClick={handleSwitchHide}
+					text={`${hideDone ? "Show" : "Hide"} done tasks`}
+				/>
+				<Link onClick={handleRemoveAll} text="Clean list" />
+			</nav>
 		</ListSection>
 	);
 };

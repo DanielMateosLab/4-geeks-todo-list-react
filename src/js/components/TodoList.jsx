@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ListHeader from "./ListHeader";
 import Papers from "./Papers";
 import useTasksApi from "../hooks/useTasksApi";
@@ -9,12 +9,18 @@ const TodoList = () => {
 	const { tasks, addTask, switchTaskIsDone, removeTask, removeAllTasks } =
 		useTasksApi();
 
+	const [hideDone, setHideDone] = useState(false);
+
 	return (
 		<Papers>
 			<main>
-				<ListHeader {...{ addTask, removeAllTasks }} />
+				<ListHeader
+					{...{ addTask, removeAllTasks, hideDone, setHideDone }}
+				/>
 
-				<ListTasks {...{ tasks, switchTaskIsDone, removeTask }} />
+				<ListTasks
+					{...{ tasks, switchTaskIsDone, removeTask, hideDone }}
+				/>
 
 				<ListFooter tasksCount={tasks.length} />
 			</main>

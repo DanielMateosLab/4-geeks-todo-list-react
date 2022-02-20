@@ -6,3 +6,7 @@ a:hover {
   text-decoration: underline;
   color: rgb(97, 73, 63);
 }
+
+a:not(:last-child) {
+  margin-right: 1.5rem;
+}
