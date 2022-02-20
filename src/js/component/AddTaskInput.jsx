@@ -41,7 +41,7 @@ const AddTaskInput = ({ addTask, removeAllTasks }) => {
 					onChange={handleChange}
 				/>
 				<a href="#" onClick={handleRemoveAll}>
-					Remove all
+					Clean list
 				</a>
 			</div>
 		</form>
