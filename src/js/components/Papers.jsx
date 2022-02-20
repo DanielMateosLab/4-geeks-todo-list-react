@@ -1,4 +1,5 @@
 import React from "react";
+import "styles/Papers.css";
 
 /** Wraps the children elements in a paper that sits over two more papers */
 const Papers = ({ children }) => (

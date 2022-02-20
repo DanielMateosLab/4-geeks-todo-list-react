@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ListSection from "./ListSection";
 import Spinner from "./Spinner";
+import "styles/ListItem.css";
 
 const ListItem = ({ task, index, removeTask }) => {
 	let [loading, setLoading] = useState(false);

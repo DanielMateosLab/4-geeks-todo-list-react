@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ListSection from "./ListSection";
 import Spinner from "./Spinner";
+import "styles/ListHeader.css";
 
 const ListHeader = ({ addTask, removeAllTasks }) => {
 	const [newTask, setNewTask] = useState("");

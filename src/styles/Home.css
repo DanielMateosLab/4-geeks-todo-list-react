@@ -1,0 +1,16 @@
+.app-container {
+    background-size: 4px;
+    background-image:
+      linear-gradient(to right, rgba(0, 0, 0, .05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 0, 0, .05) 1px, transparent 1px),
+      linear-gradient(rgb(254, 255, 238), rgb(254, 255, 238));
+    min-height: 100vh;
+    padding-bottom: 2rem;
+}
+
+.app-title {    
+    color: var(--primary-color);
+    font-size: 8rem;
+    font-weight: 200;
+    text-align: center;
+}

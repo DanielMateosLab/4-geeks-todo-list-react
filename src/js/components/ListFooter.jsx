@@ -1,5 +1,6 @@
 import React from "react";
 import ListSection from "./ListSection";
+import "styles/ListFooter.css";
 
 const ListFooter = ({ tasksCount }) => (
 	<ListSection htmlElement="footer">
