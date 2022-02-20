@@ -2,19 +2,14 @@ import React, { useState } from "react";
 import ListSection from "./ListSection";
 import Spinner from "./Spinner";
 import "styles/ListHeader.css";
+import useLoading from "../hooks/useLoading";
 
 const ListHeader = ({ addTask, removeAllTasks }) => {
 	const [newTask, setNewTask] = useState("");
-	const [loading, setLoading] = useState(false);
+	const { loading, handleLoading } = useLoading();
 
 	function handleChange(event) {
 		setNewTask(event.target.value);
-	}
-
-	async function handleLoading(asyncFunc) {
-		setLoading(true);
-		await asyncFunc();
-		setLoading(false);
 	}
 
 	function handleSubmit(event) {
