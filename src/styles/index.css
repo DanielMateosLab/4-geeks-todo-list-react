@@ -2,12 +2,3 @@
   --primary-color: rgb(121, 91, 79);
   --secondary-color: #6d6d6d;
 }
-
-a {
-  color: var(--primary-color);
-  text-decoration: none;
-}
-a:hover {
-  text-decoration: underline;
-  color: rgb(97, 73, 63);
-}

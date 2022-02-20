@@ -3,6 +3,7 @@ import ListSection from "./ListSection";
 import Spinner from "./Spinner";
 import "styles/ListHeader.css";
 import useLoading from "../hooks/useLoading";
+import Link from "./Link";
 
 const ListHeader = ({ addTask, removeAllTasks }) => {
 	const [newTask, setNewTask] = useState("");
@@ -20,9 +21,7 @@ const ListHeader = ({ addTask, removeAllTasks }) => {
 		setNewTask("");
 	}
 
-	function handleRemoveAll(event) {
-		event.preventDefault();
-
+	function handleRemoveAll() {
 		handleLoading(removeAllTasks);
 	}
 
@@ -38,9 +37,7 @@ const ListHeader = ({ addTask, removeAllTasks }) => {
 					onChange={handleChange}
 				/>
 			</form>
-			<a href="#" onClick={handleRemoveAll}>
-				Clean list
-			</a>
+			<Link onClick={handleRemoveAll} text="Clean list" />
 		</ListSection>
 	);
 };
