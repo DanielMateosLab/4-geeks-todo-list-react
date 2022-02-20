@@ -1,10 +1,7 @@
-import React from "react"
+import React from "react";
 
 /** Converts children elems. in a todo-list row */
-const ListSection = ({ children }) => (
-    <div className="list-item">
-        { children }
-    </div>
-)
+const ListSection = ({ children, htmlElement = "div" }) =>
+	React.createElement(htmlElement, { className: "list-item" }, ...children);
 
-export default ListSection
+export default ListSection;
