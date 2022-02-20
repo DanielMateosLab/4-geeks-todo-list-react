@@ -3,7 +3,7 @@ import ListHeader from "./ListHeader";
 import Papers from "./Papers";
 import ListItem from "./ListItem";
 import useTasksApi from "../hooks/useTasksApi";
-import ListSection from "./ListSection";
+import ListFooter from "./ListFooter";
 
 const TodoList = () => {
 	const { tasks, addTask, removeTask, removeAllTasks } = useTasksApi();
@@ -21,12 +21,7 @@ const TodoList = () => {
 					))}
 				</ul>
 
-				<ListSection htmlElement="footer">
-					{tasks.length
-						? tasks.length +
-						  ` item${tasks.length > 1 ? "s" : ""} left`
-						: "No tasks, add a task"}
-				</ListSection>
+				<ListFooter tasksCount={tasks.length} />
 			</main>
 		</Papers>
 	);
