@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 const useTasksApi = () => {
 	const uri =
 		"https://assets.breatheco.de/apis/fake/todos/user/danielMateosLab";
+
 	let [tasks, setTasks] = useState([]);
 
 	useEffect(() => {
@@ -58,9 +59,19 @@ const useTasksApi = () => {
 		await updateTasks([{ label, done: false }, ...tasks]);
 	}
 
+	/** Flips task done value (true/false) */
+	async function switchTaskIsDone(index) {
+		const newTasks = [...tasks];
+
+		newTasks[0].done = !newTasks[0].done;
+
+		await updateTasks(newTasks);
+	}
+
 	/** Removes task with the given index */
 	async function removeTask(index) {
 		const newTasks = [...tasks];
+
 		newTasks.splice(index, 1);
 
 		await updateTasks(newTasks);
@@ -73,6 +84,7 @@ const useTasksApi = () => {
 	return {
 		tasks,
 		addTask,
+		switchTaskIsDone,
 		removeTask,
 		removeAllTasks,
 	};
