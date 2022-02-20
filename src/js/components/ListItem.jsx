@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ListSection from "./ListSection";
 import Spinner from "./Spinner";
 
 const ListItem = ({ task, index, removeTask }) => {
@@ -13,7 +14,7 @@ const ListItem = ({ task, index, removeTask }) => {
 	}
 
 	return (
-		<li className="list-item">
+		<ListSection htmlElement="li">
 			{loading && <Spinner />}
 
 			{task.label}
@@ -21,7 +22,7 @@ const ListItem = ({ task, index, removeTask }) => {
 			<button className="close-btn" onClick={handleRemove}>
 				<i className="bi bi-x"></i>
 			</button>
-		</li>
+		</ListSection>
 	);
 };
 

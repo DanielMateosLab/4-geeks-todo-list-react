@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ListSection from "./ListSection";
 import Spinner from "./Spinner";
 
 const ListHeader = ({ addTask, removeAllTasks }) => {
@@ -30,9 +31,9 @@ const ListHeader = ({ addTask, removeAllTasks }) => {
 	}
 
 	return (
-		<form onSubmit={handleSubmit}>
-			<div className="list-item">
-				{loading && <Spinner />}
+		<ListSection htmlElement="header">
+			{loading && <Spinner />}
+			<form onSubmit={handleSubmit}>
 				<input
 					type="text"
 					placeholder="What needs to be done?"
@@ -40,11 +41,11 @@ const ListHeader = ({ addTask, removeAllTasks }) => {
 					value={newTask}
 					onChange={handleChange}
 				/>
-				<a href="#" onClick={handleRemoveAll}>
-					Clean list
-				</a>
-			</div>
-		</form>
+			</form>
+			<a href="#" onClick={handleRemoveAll}>
+				Clean list
+			</a>
+		</ListSection>
 	);
 };
 
