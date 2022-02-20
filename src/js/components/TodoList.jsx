@@ -6,14 +6,15 @@ import ListFooter from "./ListFooter";
 import ListTasks from "./ListTasks";
 
 const TodoList = () => {
-	const { tasks, addTask, removeTask, removeAllTasks } = useTasksApi();
+	const { tasks, addTask, switchTaskIsDone, removeTask, removeAllTasks } =
+		useTasksApi();
 
 	return (
 		<Papers>
 			<main>
 				<ListHeader {...{ addTask, removeAllTasks }} />
 
-				<ListTasks tasks={tasks} removeTask={removeTask} />
+				<ListTasks {...{ tasks, switchTaskIsDone, removeTask }} />
 
 				<ListFooter tasksCount={tasks.length} />
 			</main>

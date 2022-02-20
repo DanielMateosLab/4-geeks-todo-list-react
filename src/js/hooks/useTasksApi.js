@@ -63,7 +63,7 @@ const useTasksApi = () => {
 	async function switchTaskIsDone(index) {
 		const newTasks = [...tasks];
 
-		newTasks[0].done = !newTasks[0].done;
+		newTasks[index].done = !newTasks[index].done;
 
 		await updateTasks(newTasks);
 	}

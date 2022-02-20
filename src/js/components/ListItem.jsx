@@ -1,24 +1,29 @@
 import React, { useState } from "react";
 import ListSection from "./ListSection";
 import Spinner from "./Spinner";
+import useLoading from "../hooks/useLoading";
 import "styles/ListItem.css";
 
-const ListItem = ({ task, index, removeTask }) => {
-	let [loading, setLoading] = useState(false);
+const ListItem = ({ task, index, removeTask, switchTaskIsDone }) => {
+	const { loading, handleLoading } = useLoading();
 
-	async function handleRemove() {
-		setLoading(true);
+	function handleRemove() {
+		handleLoading(() => removeTask(index));
+	}
 
-		await removeTask(index);
-
-		setLoading(false);
+	function handleSwitchDone() {
+		handleLoading(() => switchTaskIsDone(index));
 	}
 
 	return (
 		<ListSection htmlElement="li">
 			{loading && <Spinner />}
 
-			{task.label}
+			<span
+				onClick={handleSwitchDone}
+				className={task.done ? "done" : ""}>
+				{task.label}
+			</span>
 
 			<button className="close-btn" onClick={handleRemove}>
 				<i className="bi bi-x"></i>

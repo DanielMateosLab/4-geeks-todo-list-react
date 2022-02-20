@@ -1,5 +1,5 @@
 footer {
-    color: #6d6d6d;
-    font-size: 0.875rem;
-    padding: 1rem 2rem;
+  color: var(--secondary-color);
+  font-size: 0.875rem;
+  padding: 1rem 2rem;
 }
